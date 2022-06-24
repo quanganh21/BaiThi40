@@ -1,12 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/src/user/css/createUser.css">
+
+    <!-- Font Awesome -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+        integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
+        crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+        integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
+        crossorigin="anonymous"></script>
 </head>
+
 <body>
-    
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3 class="font-weight-bold">MY FARM</h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li>
+                    <a href="#">Trang Chủ</a>
+                </li>
+
+                <li class="active">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Quản Lý
+                        Người Dùng</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a href="#">Danh Sách Người Dùng</a>
+                        </li>
+                        <li>
+                            <a href="#">Thêm Người Dùng Mới</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="active">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Quản Lý
+                        Mùa Vụ</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a href="/src/farm/seasonList.html">Danh Sách Mùa Vụ</a>
+                        </li>
+                        <li>
+                            <a href="/src/farm/createSeason.html">Thêm Mùa Vụ Mới</a>
+                        </li>
+                        <li>
+                            <a href="">Thống Kê Mùa Vụ</a>
+                        </li>
+                        <li>
+                            <a href="/src/farm/reportSeason.html">Báo Cáo Mùa Vụ</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Bản Đồ</a>
+                </li>
+                <li>
+                    <a href="#">404</a>
+                </li>
+            </ul>
+
+        </nav>
+        <!-- Page Content  -->
+        <div id="content">
+            <nav class="navbar navbar-expand-lg ">
+                <button type="button" id="sidebarCollapse" class="btn btn-info d-md-none">
+                    <span></span>
+                    <i class="fas fa-align-left"></i>
+                </button>
+            </nav>
+            <div class="createUser">
+                <div class="row container">
+                    <form class="col">
+                        <h1 id="font">USER</h1>
+                        <div class="row form-group">
+                            <div class="col">
+                                <input id="hoten" type="text" class="form-control " placeholder="Họ Tên">
+                            </div>
+
+                        </div>
+                        <div id="gmail" class="input-group">
+                            <input type="text" class="form-control" placeholder="Username"
+                                aria-label="Input group example" aria-describedby="btnGroupAddon">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text" id="gmail">@gmail.com</div>
+                            </div>
+                        </div>
+                        <p id="matt">Bạn có thể sử dụng chữ cái, số và dấu chấm</p>
+                        <div class="row form-group">
+                            <div class="col">
+                                <input id="mk" type="password" class="form-control" placeholder="Mật khẩu">
+                            </div>
+
+                        </div>
+                        <p id="mattt">Sử dụng 8 ký tự trở lên và kết hợp chữ cái, chữ số và biểu tượng</p>
+                        <div class="form-group form-check">
+                            <input type="checkbox" class="form-check-input" id="showmk">
+                            <label class="form-check-label" for="showmk">Hiện mật khẩu</label>
+                        </div>
+                        <div>
+                            <input id="img" type="file"></input>
+                            <p>Ảnh cho phép : jpeg, jpg, gif, png</p>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-primary close-modal" id="ADD">ADD</button>
+                            <a href="/BaiThi40-master/src/home.html"><button type="button"
+                                    class="btn btn-secondary close-modal" id="btnModalCancel">Cancel</button></a>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+            crossorigin="anonymous"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#sidebarCollapse').on('click', function () {
+                    $('#sidebar').toggleClass('active');
+                });
+            });
+           
+        </script>
 </body>
+
 </html>
