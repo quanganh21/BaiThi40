@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/src/farm/css/seasonList.css">
+
+    <!-- Font Awesome -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+        integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
+        crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+        integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3 class="font-weight-bold">MY FARM</h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li>
+                    <a href="/src/home.html">Trang Chủ</a>
+                </li>
+
+                <li class="active">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Quản Lý
+                        Người Dùng</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a href="#">Danh Sách Người Dùng</a>
+                        </li>
+                        <li>
+                            <a href="#">Thêm Người Dùng Mới</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="active">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Quản Lý
+                        Mùa Vụ</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a href="/src/farm/seasonList.html">Danh Sách Mùa Vụ</a>
+                        </li>
+                        <li>
+                            <a href="/src/farm/createSeason.html">Thêm Mùa Vụ Mới</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/src/farm/reportSeason.html">Thống Kê & Báo Cáo</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Bản Đồ</a>
+                </li>
+                <li>
+                    <a href="#">404</a>
+                </li>
+            </ul>
+
+        </nav>
+        <!-- Page Content  -->
+        <div id="content">
+            <nav class="navbar navbar-expand-lg ">
+                <button type="button" id="sidebarCollapse" class="btn btn-info d-md-none">
+                    <span></span>
+                    <i class="fas fa-align-left"></i>
+                </button>
+            </nav>
+            <table class="table" id="tbAct">
+
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Tên Mùa Vụ</th>
+                        <th scope="col">Số Lượng Ước Tính (Kg)</th>
+                        <th scope="col">Ngày Bắt Đầu</th>
+                        <th scope="col">Ngày Dự Kiến Kết Thúc</th>
+                        <th scope="col">Hành Động</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tbody">
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+    <!--------------------------------Modal EditUser-------------------------------------->
+
+    <div id="myEdit" class="myModal">
+        <div class="modal-content container">
+            <span class="close d-flex justify-content-end">&times;</span>
+            <form action="">
+                <div class="form-group">
+                    <span>ID</span>
+                    <input disabled id="textSeasonID" type="text" class="form-control" >
+                </div>
+                <div class="form-group">
+                    <span>Tên Mùa Vụ</span>
+                    
+                    <input id="textNameSeasonEdit" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <span>Sản Lượng Ước Tính (Kg)</span>
+
+                    <input disabled id="textQuantityEdit" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <span>Ngày Bắt Đầu</span>
+                    <input id="textDateStartEdit" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <span>Ngày Kết Thúc Dự Kiến</span>
+                    <input id="textDateEndEdit" type="text" class="form-control">
+                </div>
+                <div class="form-gro d-flex justify-content-end">
+                    <button type="button" class="btn btn-primary" id="btnEditDone">Cập Nhật</button>
+                    <button type="button" class="btn btn-secondary" id="btnEditCancel">Hủy</button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+        crossorigin="anonymous"></script>
+
+    <script>
+
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+        
+
+        $(".close").click(function () {
+            $("#myEdit").hide()
+        })
+        $("#btnEditCancel").click(function () {
+            $("#myEdit").hide()
+        })
+        //---------------------------------------Get User-------------------------------------------
+        loadData();
+
+        function loadData() {
+            $("#tbAct tbody").empty();
+            var strList = "";
+            $.ajax({
+                url: "https://627c763ce5ac2c452af08808.mockapi.io/activity",
+                type: "GET",
+                success: function (result) {
+                    arrEle = result;
+                    for (var i = 0; i < result.length; i++) {
+                        strList = strList + '<tr><th scope = "row">' + result[i].id + '</th>' +
+                            '<td>' + result[i].name + '</td>' +
+                            '<td>' + result[i].quantity + '</td>' +
+                            '<td>' + result[i].startAt + '</td>' +
+                            '<td>' + result[i].endAt + '</td>' +
+                            "<td>" +
+                            '<img class="actionIcon" style="width: 30px; height: 30px; cursor: pointer" class="" src="/img/setting.png" onclick = edit(' + result[i].id + ')>' +
+                            '<img class="actionIcon" style="width: 30px; height: 30px; cursor: pointer" class="" src="/img/trash-box.png" onclick = deleteUser(' + result[i].id + ')>'
+                        "</td></tr>"
+                    }
+                    $("#tbAct tbody").append(strList);
+                }
+            })
+        }
+        // //-----------------................--UpDate User-------------------------................
+        function edit(id) {
+            // alert(id)
+
+            for (var i = 0; i < arrEle.length; i++) {
+                if (arrEle[i].id == id) {
+                    // alert("Tim dc" + (i+1))
+                    $("#textSeasonID").val(arrEle[i].id);
+                    $("#textNameSeasonEdit").val(arrEle[i].name);
+                    $("#textQuantityEdit").val(arrEle[i].quantity);
+                    $("#textDateStartEdit").val(arrEle[i].startAt);
+                    $("#textDateEndEdit").val(arrEle[i].endAt);
+                    $("#myEdit").show();
+                    break;
+                }
+            }
+        }
+        $("#btnEditDone").click(function () {
+
+            var updateData = {};
+            var id = $("#textSeasonID").val();
+            updateData.name = $("#textNameSeasonEdit").val();
+            updateData.quantity = $("#textQuantityEdit").val();
+            updateData.startAt = $("#textDateStartEdit").val();
+            updateData.endAt = $("#textDateEndEdit").val();
+
+            console.log(updateData)
+            $.ajax({
+                url: "https://627c763ce5ac2c452af08808.mockapi.io/activity/" + id,
+                type: "PUT",
+                data: updateData,
+                success: function (result) {
+                    $("#myEdit").hide()
+                    $("#tbAct tbody").empty();
+                    // location.reload()
+                    loadData();
+                }
+            })
+        })
+
+        //-------------...................------Delete User-------------------------................
+        function deleteUser(id) {
+            $.ajax({
+                url: "https://627c763ce5ac2c452af08808.mockapi.io/activity/" + id,
+                type: "DELETE",
+                success: function () {
+                    $("#tbody").empty();
+                    loadData();
+
+                }
+            })
+        }
+
+
+    </script>
+</body>
+
+</html>
